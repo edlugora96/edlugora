@@ -1,0 +1,88 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+.Home-header {
+  background-color: #1c1259;
+  height: 100vh;
+  text-align: center;
+  color: #fff;
+}
+.Home-header span {
+  font-size: 2rem;
+}
+.Home-header p {
+  background-color: #cacaea;
+  padding: 1rem 0.5rem;
+}
+.Home-Navbar {
+  height: 56px;
+  color: #fff;
+  width: 100vw;
+}
+.Home-Navbar-ul {
+  display: flex;
+  flex-direction: row;
+  align-content: stretch;
+  align-items: center;
+  padding: 0 0.5rem;
+  margin: 0;
+  height: inherit;
+  width: inherit;
+  list-style-type: none;
+  font-variant: small-caps;
+  font-weight: 900;
+}
+.Home-Navbar-ul a {
+  color: inherit;
+  text-decoration: none;
+}
+.Home-Navbar-brand {
+  display: inherit;
+  flex-direction: inherit;
+  align-items: inherit;
+  flex-grow: 10;
+}
+.Home-Navbar-brand img {
+  max-width: 40px;
+  margin-right: 0.5rem;
+}
+.Home-Navbar-login {
+  flex-grow: 1;
+  text-align: center;
+}
+.Home-Navbar-config {
+  flex-grow: 1;
+  text-align: center;
+}
+.Home-body {
+  display: flex;
+  align-content: stretch;
+  align-items: center;
+}
+@media screen and (orientation: portrait) {
+  .Home-body {
+    flex-direction: column;
+  }
+}
+@media screen and (orientation: landscape) {
+  .Home-body {
+    flex-direction: row;
+  }
+  .Home-body p {
+    width: 50vw;
+  }
+}
+/*
+#1C1259
+#CACAEA
+#EE4266
+#FF9B00
+#FFD28C
+*/

@@ -7,10 +7,10 @@
   height: 100vh;
   overflow: auto;
   /* opacity: 0.6; */
-  background:
-    linear-gradient(180deg, rgba(52,58,64,1) 12%, rgba(58,64,70,1) 15%, rgba(155,158,161,0) 57%, rgba(255,255,255,0) 100%),
+  background:#343a40;
+    /* linear-gradient(180deg, rgba(52,58,64,1) 12%, rgba(58,64,70,1) 15%, rgba(155,158,161,0) 57%, rgba(255,255,255,0) 100%),
     linear-gradient(0deg, rgba(52,58,64,1) 12%, rgba(58,64,70,1) 15%, rgba(155,158,161,0) 57%, rgba(255,255,255,0) 100%),
-    url('../asset/img/portal.jpg');
+    url('../asset/img/portal.jpg'); */
   background-size: cover;
   /* filter: grayscale(100%); */
   /* animation: background-gray infinite 5s linear; */
@@ -82,6 +82,20 @@
 }
 
 .beat
+{
+  animation: beat infinite 1s linear;
+}
+.spinnerHover:hover
+{
+  animation: spinner infinite 5s linear;
+}
+
+.spinner3dHover:hover
+{
+  animation: spinner3d infinite 20s linear;
+}
+
+.beatHover:hover
 {
   animation: beat infinite 1s linear;
 }
