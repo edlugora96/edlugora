@@ -6,8 +6,8 @@ class Home extends Component {
     return (
       <header className="Home-header">
         <Navbar />
-        <span>¡Hola mundo!</span>
-        <div className="Home-body">
+        
+        {/*<span>¡Hola mundo!</span><div className="Home-body">
           <p>
              Te saludo yo
              <strong> Ed</strong>uado
@@ -15,13 +15,13 @@ class Home extends Component {
              <strong> Go</strong>nzález
              <strong> Ra</strong>veli.
              <br/>Bienvenidos a <strong>EdluGora</strong>
-             <br/><small><i>"Les sorprendería la cantidad de familiares y amigos que no entienden mi acrónimo".</i></small>
+             <br/><small><i>"Te sorprendería la cantidad de familiares y amigos que no entienden mi acrónimo".</i></small>
            </p>
            <p>
              <strong>Me presento tecnicamente:</strong>
-             <br/>Soy un desarrollador Web, desarrollo aplicaciones basadas en Node js principalmente, siguiendo la corriente MERN lo complemento con Redux, Web Sockets, mucho más..., logrando una alta gama de aplicaciones para distintas finalidades.
+             <br/>Soy un desarrollador Web, desarrollo aplicaciones basadas en Javascript principalmente, siguiendo la corriente MERN lo complemento con Redux, Web Sockets y mucho más..., logrando una alta gama de aplicaciones para distintas finalidades.
            </p>
-        </div>
+        </div>*/}
        </header>
     );
   }
