@@ -5,7 +5,7 @@ import Home from './components/Home/Home';
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <BrowserRouter basename="/">
         <Route exact path="/" component={Home}/>
       </BrowserRouter>
     );
