@@ -112,6 +112,11 @@ code {
 .Home-body-navbar .dropdown-basic * {
   margin-right: 0.2rem;
 }
+@media screen and (min-width: 700px) {
+  .Home-body-navbar .dropdown-basic {
+    display: none !important;
+  }
+}
 .Home-Navbar-login {
   flex-grow: 1;
   text-align: center;
@@ -175,7 +180,7 @@ code {
   background: #fff;
   position: relative;
   z-index: 2;
-  margin-bottom: 25vh;
+  margin-bottom: 40vh;
   overflow: hidden;
   transform-origin: center center;
 }
@@ -186,37 +191,62 @@ code {
 .card {
   position: relative;
   z-index: 2;
-  transition: all 1s ease-in-out;
+}
+@media screen and (min-width: 700px) {
+  .card {
+    max-width: 40vw;
+    margin: 3rem 10vw;
+  }
+  .card .list-group {
+    border: 1px solid rgba(0,0,0,0.125);
+    max-width: 40vw;
+    position: absolute;
+    right: -101%;
+    left: 101%;
+  }
+  .card img {
+    float: left !important;
+  }
 }
 .card img {
   max-width: 5rem;
   float: right;
 }
-.proyects .list-group-item {
-  display: none;
+@media screen and (max-width: 700px) {
+  .proyects .list-group-item {
+    display: none;
+  }
 }
-.proyects .list-group-item-show .list-group-item:nth-child(1) {
-  display: block;
-  transform: scale(0);
-  animation: list-group-item-show 1s forwards;
+@media screen and (max-width: 700px) {
+  .proyects .list-group-item-show .list-group-item:nth-child(1) {
+    display: block;
+    transform: scale(0);
+    animation: list-group-item-show 1s forwards;
+  }
 }
-.proyects .list-group-item-show .list-group-item:nth-child(2) {
-  display: block;
-  transform: scale(0);
-  animation: list-group-item-show 1s forwards;
-  animation-delay: 300ms;
+@media screen and (max-width: 700px) {
+  .proyects .list-group-item-show .list-group-item:nth-child(2) {
+    display: block;
+    transform: scale(0);
+    animation: list-group-item-show 1s forwards;
+    animation-delay: 300ms;
+  }
 }
-.proyects .list-group-item-show .list-group-item:nth-child(3) {
-  display: block;
-  transform: scale(0);
-  animation: list-group-item-show 1s forwards;
-  animation-delay: 600ms;
+@media screen and (max-width: 700px) {
+  .proyects .list-group-item-show .list-group-item:nth-child(3) {
+    display: block;
+    transform: scale(0);
+    animation: list-group-item-show 1s forwards;
+    animation-delay: 600ms;
+  }
 }
-.proyects .list-group-item-show .list-group-item:nth-child(4) {
-  display: block;
-  transform: scale(0);
-  animation: list-group-item-show 1s forwards;
-  animation-delay: 900ms;
+@media screen and (max-width: 700px) {
+  .proyects .list-group-item-show .list-group-item:nth-child(4) {
+    display: block;
+    transform: scale(0);
+    animation: list-group-item-show 1s forwards;
+    animation-delay: 900ms;
+  }
 }
 .i-am {
   height: 100vh;
@@ -229,6 +259,11 @@ code {
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
+}
+@media screen and (min-width: 700px) {
+  .i-am {
+    overflow: hidden;
+  }
 }
 .i-am * {
   position: relative;
@@ -259,6 +294,12 @@ code {
   content: "";
   position: absolute;
 }
+@media screen and (min-width: 700px) {
+  .i-am::before,
+  .i-am::after {
+    transform: none !important;
+  }
+}
 .i-am::before {
   z-index: -1;
   top: -10%;
@@ -267,6 +308,11 @@ code {
   height: 10rem;
   background: #fff;
   transform: rotateZ(4deg);
+}
+@media screen and (min-width: 700px) {
+  .i-am::before {
+    top: -7% !important;
+  }
 }
 @media screen and (orientation: landscape) {
   .i-am::before {
@@ -299,11 +345,44 @@ code {
   animation: fade-slide-down 1s forwards;
   animation-delay: 600ms;
 }
+@media screen and (min-width: 700px) {
+  .i-am-last-envolp {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+}
+@media screen and (min-width: 700px) {
+  .i-am-container {
+    max-width: 40vw;
+  }
+}
+@media screen and (orientation: landscape) {
+  .i-am-container p {
+    font-size: 2vw;
+  }
+}
+@media screen and (orientation: portrait) {
+  .i-am-container p {
+    font-size: 2vh;
+  }
+}
+.i-am-container + img {
+  max-width: 30vw;
+}
 .contact-to-me {
   position: relative;
   z-index: 3;
   padding: 1rem;
   background: #fff;
+}
+@media screen and (min-width: 700px) {
+  .contact-to-me {
+    max-width: 50vw;
+    margin: 0 auto;
+  }
 }
 .donate {
   background: url("../img/hands.jpg");
@@ -320,6 +399,15 @@ code {
   padding: 1rem;
   transform-origin: center center;
   transform: scale(0);
+}
+@media screen and (min-width: 700px) {
+  .donate h3 {
+    font-size: 4vw;
+  }
+  .donate p,
+  .donate a {
+    font-size: 3vw;
+  }
 }
 .donate.donate-show {
   animation: fade-slide-up 1.5s forwards;
@@ -340,6 +428,11 @@ code {
   top: -3%;
   color: #fff;
 }
+@media screen and (min-width: 700px) {
+  .donate a:last-child {
+    top: 3%;
+  }
+}
 .donate p {
   text-align: center;
 }
@@ -357,10 +450,22 @@ code {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 25vh;
+  height: 40vh;
 }
 .Home-footer a {
   color: #fff;
+}
+@media screen and (min-width: 700px) {
+  .Home-dropdown-menu {
+    display: flex !important;
+    position: relative;
+    top: 0;
+    background: transparent;
+    border: none;
+  }
+  .Home-dropdown-menu .dropdown-item {
+    color: #fff;
+  }
 }
 /*
 #1C1259

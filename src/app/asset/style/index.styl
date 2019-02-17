@@ -8,10 +8,6 @@ body
     sans-serif
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
-  @media screen and (orientation:landscape)
-    // font-size 5vw !important
-  @media screen and (orientation:portrait)
-    // font-size 5vh !important
 
 code
   font-family source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -111,6 +107,8 @@ code
     text-decoration none
     *
       margin-right 0.2rem
+    @media screen and (min-width: 700px)
+      display none !important
 .Home-Navbar-login
   flex-grow 1
   text-align center
@@ -164,7 +162,7 @@ code
   background #fff
   position relative
   z-index 2
-  margin-bottom 25vh
+  margin-bottom 40vh
   overflow hidden
   transform-origin center center
   h3
@@ -173,32 +171,48 @@ code
 .card
   position relative
   z-index 2
-  transition all 1s ease-in-out
+  // transition all 1s ease-in-out
+  @media screen and (min-width: 700px)
+    max-width 40vw
+    margin 3rem 10vw
+    .list-group
+      border 1px solid rgba(0,0,0,.125)
+      max-width 40vw
+      position absolute
+      right -101%
+      left 101%
+    img
+      float left !important
   img
     max-width 5rem
     float right
 .proyects
   .list-group-item
-    display none
+    @media screen and (max-width: 700px)
+      display none
   .list-group-item-show .list-group-item:nth-child(1)
-    display block
-    transform scale(0)
-    animation list-group-item-show 1s forwards
+    @media screen and (max-width: 700px)
+      display block
+      transform scale(0)
+      animation list-group-item-show 1s forwards
   .list-group-item-show .list-group-item:nth-child(2)
-    display block
-    transform scale(0)
-    animation list-group-item-show 1s forwards
-    animation-delay 300ms
+    @media screen and (max-width: 700px)
+      display block
+      transform scale(0)
+      animation list-group-item-show 1s forwards
+      animation-delay 300ms
   .list-group-item-show .list-group-item:nth-child(3)
-    display block
-    transform scale(0)
-    animation list-group-item-show 1s forwards
-    animation-delay 600ms
+    @media screen and (max-width: 700px)
+      display block
+      transform scale(0)
+      animation list-group-item-show 1s forwards
+      animation-delay 600ms
   .list-group-item-show .list-group-item:nth-child(4)
-    display block
-    transform scale(0)
-    animation list-group-item-show 1s forwards
-    animation-delay 900ms
+    @media screen and (max-width: 700px)
+      display block
+      transform scale(0)
+      animation list-group-item-show 1s forwards
+      animation-delay 900ms
 .i-am
   height 100vh
   transform-style preserve-3d
@@ -211,6 +225,8 @@ code
   background-position center
   background-size cover
   background-attachment fixed
+  @media screen and (min-width: 700px)
+    overflow hidden
   *
     position relative
     z-index 2
@@ -234,6 +250,8 @@ code
   &::before,  &::after
     content ""
     position absolute
+    @media screen and (min-width: 700px)
+      transform none !important
   &::before
     z-index -1
     top -10%
@@ -242,6 +260,8 @@ code
     height 10rem
     background #fff
     transform rotateZ(4deg)
+    @media screen and (min-width: 700px)
+      top -7% !important
     @media screen and (orientation:landscape)
       top -30%
   &::after
@@ -264,11 +284,32 @@ code
   footer
     animation fade-slide-down 1s forwards
     animation-delay 600 ms
+.i-am-last-envolp
+  @media screen and (min-width: 700px)
+    display flex
+    flex-direction row
+    justify-content center
+    align-items center
+    position relative
+.i-am-container
+  @media screen and (min-width: 700px)
+    max-width 40vw
+  @media screen and (orientation:landscape)
+    p
+      font-size 2vw
+  @media screen and (orientation:portrait)
+    p
+      font-size 2vh
+.i-am-container + img
+  max-width 30vw
 .contact-to-me
   position relative
   z-index 3
   padding 1rem
   background #fff
+  @media screen and (min-width: 700px)
+    max-width: 50vw;
+    margin: 0 auto;
 .donate
   background url('../img/hands.jpg')
   background-position center
@@ -284,6 +325,11 @@ code
   padding 1rem
   transform-origin center center
   transform scale(0)
+  @media screen and (min-width: 700px)
+    h3
+      font-size 4vw
+    p, a
+      font-size 3vw
   &.donate-show
     animation fade-slide-up 1.5s forwards
   section
@@ -299,6 +345,8 @@ code
     position relative
     top -3%
     color #fff
+    @media screen and (min-width: 700px)
+      top 3%
   p
     text-align center
 .Home-footer
@@ -315,9 +363,18 @@ code
   bottom 0
   left 0
   right 0
-  height 25vh
+  height 40vh
   a
     color #fff
+.Home-dropdown-menu
+  @media screen and (min-width: 700px)
+    display flex !important
+    position relative
+    top 0
+    background transparent
+    border none
+    .dropdown-item
+      color #ffff
 @keyframes hero-caption
   0% {
     opacity 0

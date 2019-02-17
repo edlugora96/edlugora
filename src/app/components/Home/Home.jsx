@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Button, Card, ListGroup, ListGroupItem, Form, Navbar as NavbarBootstrap, Dropdown  } from 'react-bootstrap';
+import { Button, Card, ListGroup, ListGroupItem, Form, Navbar as NavbarBootstrap, Dropdown, Nav, Image } from 'react-bootstrap';
 import { scrollTo } from 'scroll-js';
 import { IoMdCheckmarkCircleOutline as Check, IoLogoNodejs, IoLogoJavascript} from "react-icons/io";
 import { FaReact } from "react-icons/fa";
 import { MdMenu, MdArrowDropDown } from "react-icons/md";
 import moment from 'moment';
 import Navbar from './Navbar';
+import avatar from '../../asset/img/avatar.jpg';
 import smsmass from '../../asset/img/smsmass.svg';
 
 class Home extends Component {
@@ -14,18 +15,24 @@ class Home extends Component {
     this.state ={
       readMoreBtnText : 'Leer todo',
       showReadMoreState : false,
+      isntPhone : false,
       menuActive: 'proyects'
     }
     this.handleScroll = this.handleScroll.bind(this);
+    this.handleResize = this.handleResize.bind(this);
     this.handleSeeMore = this.handleSeeMore.bind(this);
     this.toggleReadMore = this.toggleReadMore.bind(this);
     this.handleScrollTo = this.handleScrollTo.bind(this);
   }
+  handleResize() {
+    this.setState({
+      isntPhone:window.matchMedia("(min-width: 700px)").matches
+    })
+  }
   handleScroll() {
     let el = document.querySelector(".Home-header-body"),
         el2 = document.querySelector(".i-am"),
-        el3 = document.querySelector(".i-am p"),
-        el4 = document.querySelector(".i-am footer"),
+        el3 = document.querySelector(".i-am-last-envolp"),
         el5 = document.querySelector(".donate"),
         el6 = document.querySelector(".proyects"),
         el7 = document.querySelector(".contact-to-me")
@@ -48,7 +55,7 @@ class Home extends Component {
     }
     if (window.scrollY>el2.offsetTop+el.scrollHeight&& window.scrollY<el2.offsetTop+el.scrollHeight+el2.scrollHeight) {
       el3.style.top = (window.pageYOffset-(el2.offsetTop+el.scrollHeight))/2 +"px"
-      el4.style.top = (window.pageYOffset-(el2.offsetTop+el.scrollHeight))/2 +"px"
+      // el4.style.top = (window.pageYOffset-(el2.offsetTop+el.scrollHeight))/2 +"px"
       // console.log(el3.style.top)
     }
   }
@@ -75,6 +82,8 @@ class Home extends Component {
   }
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('resize', this.handleResize);
+    window.addEventListener('load', this.handleResize);
     document.querySelector('#see-more').addEventListener('click', this.handleSeeMore);
     document.querySelector('#proyects').addEventListener('click', this.handleScrollTo);
     document.querySelector('#i-am').addEventListener('click', this.handleScrollTo);
@@ -84,6 +93,8 @@ class Home extends Component {
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('resize', this.handleResize);
+    window.removeEventListener('load', this.handleResize);
     document.querySelector('#see-more').removeEventListener('click', this.handleSeeMore);
     document.querySelector('#proyects').removeEventListener('click', this.handleScrollTo);
     document.querySelector('#i-am').removeEventListener('click', this.handleScrollTo);
@@ -91,7 +102,7 @@ class Home extends Component {
     document.querySelector('#donate').removeEventListener('click', this.handleScrollTo);
   }
   render() {
-    const { showReadMoreState, readMoreBtnText, menuActive } = this.state
+    const { showReadMoreState, readMoreBtnText, menuActive, isntPhone } = this.state
     return (
       <React.Fragment>
         <header className="Home-header">
@@ -119,7 +130,7 @@ class Home extends Component {
               <Dropdown.Toggle id="dropdown-basic" as={CustomToggle} ><MdMenu/> <span>Menu</span><MdArrowDropDown/>
               </Dropdown.Toggle>
 
-              <Dropdown.Menu>
+              <Dropdown.Menu className="Home-dropdown-menu">
                 <Dropdown.Item id="proyects" active={menuActive=="proyects"?true:false}>Proyectos</Dropdown.Item>
                 <Dropdown.Item id="i-am" active={menuActive=="i-am"?true:false}>Conoceme</Dropdown.Item>
                 <Dropdown.Item id="contact-to-me" active={menuActive=="contact-to-me"?true:false} >Contactame</Dropdown.Item>
@@ -131,12 +142,16 @@ class Home extends Component {
             <Card.Body>
               <Card.Title> SMS Mass</Card.Title>
               <Card.Text>
-                <img src={smsmass} alt=""/>Con ésta aplicación puedes mandar miles de SMS sin mucho esfuerso, a partir de una lista de contactos y un mensaje, podras: <Button onClick={this.toggleReadMore} variant="primary" size="sm">
-                            {readMoreBtnText}
-                          </Button>
+                <img src={smsmass} alt=""/>Con ésta aplicación puedes mandar miles de SMS sin mucho esfuerso, a partir de una lista de contactos y un mensaje, podras:
+                  {!isntPhone?
+                    <Button onClick={this.toggleReadMore} variant="primary" size="sm">
+                      {readMoreBtnText}
+                    </Button>
+                    :''
+                  }
               </Card.Text>
             </Card.Body>
-            <ListGroup className={`list-group-flush ${showReadMoreState?'list-group-item-show':''}`}>
+            <ListGroup className={`list-group-flush ${showReadMoreState||isntPhone?'list-group-item-show':''}`}>
               <ListGroupItem><Check/> Cominicar tus campañas de marketing.</ListGroupItem>
               <ListGroupItem><Check/> Comunicar a tus empleados cualquier evento a celebrar.</ListGroupItem>
               <ListGroupItem><Check/> Mandar tus recordatorios.</ListGroupItem>
@@ -148,14 +163,17 @@ class Home extends Component {
           </Card>
           <article className="i-am">
             <h3>¿Quien es Eduardo Gonzalez?</h3>
-            <p>
-              Soy un desarrollador Web, desarrollo aplicaciones basadas en Javascript principalmente, siguiendo la corriente MERN, aunado con la aplicación de Redux, Web Sockets y mucho más..., logrando una amplia gama de aplicaciones para distintas finalidades.
-             </p>
-              <footer>
-                <IoLogoNodejs/>
-                <IoLogoJavascript className="beat"/>
-                <FaReact className="spinner"/>
-              </footer>
+            <section className="i-am-last-envolp"><section className="i-am-container">
+                <p>
+                  Soy un desarrollador Web, desarrollo aplicaciones basadas en Javascript principalmente, siguiendo la corriente MERN, aunado con la aplicación de Redux, Web Sockets y mucho más..., logrando una amplia gama de aplicaciones para distintas finalidades.
+                 </p>
+                  <footer>
+                    <IoLogoNodejs/>
+                    <IoLogoJavascript className="beat"/>
+                    <FaReact className="spinner"/>
+                  </footer>
+              </section>
+              {isntPhone?<Image src={avatar} fluid rounded />:''}</section>
           </article>
           <Form className="contact-to-me">
             <h3>Contactame</h3>
@@ -186,7 +204,7 @@ class Home extends Component {
           <article className="donate">
             <a href="https://paypal.me/edlugora" target="_blank">
               <section>
-                <h3>¿Me ayudas a<br/> continuar con mis sueños?</h3>
+                <h3>¿Me ayudas a<br/> continuar con mis metas?</h3>
                 <p>Siempre necesitaremos de una mano amiga.</p>
               </section></a>
             <Button variant="success" href="https://paypal.me/edlugora" target="_blank">Apoyar</Button>
