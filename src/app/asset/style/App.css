@@ -63,6 +63,10 @@
 .beat {
   animation: beat infinite 1s linear;
 }
+.pulse {
+  transform-origin: center center;
+  animation: pulse infinite 1s linear;
+}
 .spinnerHover:hover {
   animation: spinner infinite 2s linear;
 }
@@ -71,6 +75,9 @@
 }
 .beatHover:hover {
   animation: beat infinite 1s linear;
+}
+.pulseHover:hover {
+  animation: pulse infinite 1s linear;
 }
 @-moz-keyframes spinner {
   0% {

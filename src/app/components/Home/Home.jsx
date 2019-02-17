@@ -1,35 +1,97 @@
 import React, { Component } from 'react';
-import { Button, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Button, Card, ListGroup, ListGroupItem, Form, Navbar as NavbarBootstrap, Dropdown  } from 'react-bootstrap';
 import { scrollTo } from 'scroll-js';
-import { IoMdCheckmarkCircleOutline as Check } from "react-icons/io";
+import { IoMdCheckmarkCircleOutline as Check, IoLogoNodejs, IoLogoJavascript} from "react-icons/io";
+import { FaReact } from "react-icons/fa";
+import { MdMenu, MdArrowDropDown } from "react-icons/md";
+import moment from 'moment';
 import Navbar from './Navbar';
 import smsmass from '../../asset/img/smsmass.svg';
 
 class Home extends Component {
   constructor(props) {
-    super(props)
+    super(props);
+    this.state ={
+      readMoreBtnText : 'Leer todo',
+      showReadMoreState : false,
+      menuActive: 'proyects'
+    }
     this.handleScroll = this.handleScroll.bind(this);
     this.handleSeeMore = this.handleSeeMore.bind(this);
+    this.toggleReadMore = this.toggleReadMore.bind(this);
+    this.handleScrollTo = this.handleScrollTo.bind(this);
   }
   handleScroll() {
-    let el = document.querySelector(".Home-header-body")
-    el.style.top = -56-(window.scrollY/2) +"px"
+    let el = document.querySelector(".Home-header-body"),
+        el2 = document.querySelector(".i-am"),
+        el3 = document.querySelector(".i-am p"),
+        el4 = document.querySelector(".i-am footer"),
+        el5 = document.querySelector(".donate"),
+        el6 = document.querySelector(".proyects"),
+        el7 = document.querySelector(".contact-to-me")
+    if (window.scrollY<el.scrollHeight) {
+      el.style.top = -56-(window.scrollY/2) +"px"
+    }
+    if (window.scrollY>el6.offsetTop+el.scrollHeight-200&& window.scrollY<el6.offsetTop+el.scrollHeight+el6.scrollHeight-200) {
+      this.setState({menuActive:'proyects'})
+    }
+    if (window.scrollY>el7.offsetTop+el.scrollHeight-200&& window.scrollY<el7.offsetTop+el.scrollHeight+el7.scrollHeight-200) {
+      this.setState({menuActive:'contact-to-me'})
+    }
+    if (window.scrollY>el2.offsetTop+el.scrollHeight-200&& window.scrollY<el2.offsetTop+el.scrollHeight+el2.scrollHeight-200) {
+      el2.classList.add('i-am-fade-slide-down');
+      this.setState({menuActive:'i-am'})
+    }
+    if (window.scrollY>el5.offsetTop+el.scrollHeight-100&& window.scrollY<el5.offsetTop+el.scrollHeight+el5.scrollHeight-200) {
+      el5.classList.add('donate-show');
+      this.setState({menuActive:'donate'})
+    }
+    if (window.scrollY>el2.offsetTop+el.scrollHeight&& window.scrollY<el2.offsetTop+el.scrollHeight+el2.scrollHeight) {
+      el3.style.top = (window.pageYOffset-(el2.offsetTop+el.scrollHeight))/2 +"px"
+      el4.style.top = (window.pageYOffset-(el2.offsetTop+el.scrollHeight))/2 +"px"
+      // console.log(el3.style.top)
+    }
   }
   handleSeeMore(){
     let el = document.querySelector(".Home-body")
-    // console.log(el.scrollY, el.scrollTop, el.offsetTop)
     scrollTo(document.body, { top: el.offsetTop, easing: 'ease-in-out' })
+  }
+  toggleReadMore(){
+    let msjBtn = 'Leer todo'
+    if (!this.state.showReadMoreState) {
+      msjBtn = 'Leer nemos'
+    }
+    this.setState({
+      readMoreBtnText : msjBtn,
+      showReadMoreState: !this.state.showReadMoreState
+    })
+  }
+  handleScrollTo(e){
+    let el0 = document.querySelector(".Home-header-body"),
+        el = document.querySelector(`.${e.currentTarget.id}`)
+    this.setState({menuActive:e.currentTarget.id})
+    scrollTo(document.body, { top: el.offsetTop+el0.scrollHeight, easing: 'ease-in-out' })
+    console.log(el.offsetTop+el0.scrollHeight)
   }
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
     document.querySelector('#see-more').addEventListener('click', this.handleSeeMore);
+    document.querySelector('#proyects').addEventListener('click', this.handleScrollTo);
+    document.querySelector('#i-am').addEventListener('click', this.handleScrollTo);
+    document.querySelector('#contact-to-me').addEventListener('click', this.handleScrollTo);
+    document.querySelector('#donate').addEventListener('click', this.handleScrollTo);
   }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
     document.querySelector('#see-more').removeEventListener('click', this.handleSeeMore);
+    document.querySelector('#proyects').removeEventListener('click', this.handleScrollTo);
+    document.querySelector('#i-am').removeEventListener('click', this.handleScrollTo);
+    document.querySelector('#contact-to-me').removeEventListener('click', this.handleScrollTo);
+    document.querySelector('#donate').removeEventListener('click', this.handleScrollTo);
   }
   render() {
+    const { showReadMoreState, readMoreBtnText, menuActive } = this.state
     return (
       <React.Fragment>
         <header className="Home-header">
@@ -50,16 +112,31 @@ class Home extends Component {
               <Button id="see-more" variant="success">Conoce mis proyectos</Button>
            </section>
           </section>
-         </header>
-         <section className="Home-body">
-          <Card>
+       </header>
+       <section className="Home-body">
+          <NavbarBootstrap className="Home-body-navbar" bg="dark">
+            <Dropdown>
+              <Dropdown.Toggle id="dropdown-basic" as={CustomToggle} ><MdMenu/> <span>Menu</span><MdArrowDropDown/>
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item id="proyects" active={menuActive=="proyects"?true:false}>Proyectos</Dropdown.Item>
+                <Dropdown.Item id="i-am" active={menuActive=="i-am"?true:false}>Conoceme</Dropdown.Item>
+                <Dropdown.Item id="contact-to-me" active={menuActive=="contact-to-me"?true:false} >Contactame</Dropdown.Item>
+                <Dropdown.Item id="donate" active={menuActive=="donate"?true:false}>Apoyame</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </NavbarBootstrap>
+          <Card className="proyects">
             <Card.Body>
               <Card.Title> SMS Mass</Card.Title>
               <Card.Text>
-                <img src={smsmass} alt=""/>Con ésta aplicación puedes mandar miles de SMS sin mucho esfuerso, a partir de una lista de contactos y un mensaje, podras: 
+                <img src={smsmass} alt=""/>Con ésta aplicación puedes mandar miles de SMS sin mucho esfuerso, a partir de una lista de contactos y un mensaje, podras: <Button onClick={this.toggleReadMore} variant="primary" size="sm">
+                            {readMoreBtnText}
+                          </Button>
               </Card.Text>
             </Card.Body>
-            <ListGroup className="list-group-flush">
+            <ListGroup className={`list-group-flush ${showReadMoreState?'list-group-item-show':''}`}>
               <ListGroupItem><Check/> Cominicar tus campañas de marketing.</ListGroupItem>
               <ListGroupItem><Check/> Comunicar a tus empleados cualquier evento a celebrar.</ListGroupItem>
               <ListGroupItem><Check/> Mandar tus recordatorios.</ListGroupItem>
@@ -72,16 +149,84 @@ class Home extends Component {
           <article className="i-am">
             <h3>¿Quien es Eduardo Gonzalez?</h3>
             <p>
-              Soy un desarrollador Web, desarrollo aplicaciones basadas en Javascript principalmente, siguiendo la corriente MERN, lo complemento con la aplicación de Redux, Web Sockets y mucho más..., para lograr una alta gama de aplicaciones para distintas finalidades.
+              Soy un desarrollador Web, desarrollo aplicaciones basadas en Javascript principalmente, siguiendo la corriente MERN, aunado con la aplicación de Redux, Web Sockets y mucho más..., logrando una amplia gama de aplicaciones para distintas finalidades.
              </p>
+              <footer>
+                <IoLogoNodejs/>
+                <IoLogoJavascript className="beat"/>
+                <FaReact className="spinner"/>
+              </footer>
           </article>
-         </section>
-       </React.Fragment>
+          <Form className="contact-to-me">
+            <h3>Contactame</h3>
+            <Form.Group controlId="formBasicName">
+              <Form.Label>Nombres</Form.Label>
+              <Form.Control type="text" placeholder="Ingrese su nombre" />
+            </Form.Group>
+            <Form.Group controlId="formBasicLastName">
+              <Form.Label>Apellidos</Form.Label>
+              <Form.Control type="text" placeholder="Ingrese su apellido" />
+            </Form.Group>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>Email</Form.Label>
+              <Form.Control type="email" placeholder="Ingrese su dirección de email" />
+            </Form.Group>
+              <Form.Text className="text-muted">
+                Nunca compartiremos tu información personal con nadie más.
+              </Form.Text>
+
+            <Form.Group controlId="exampleForm.ControlTextarea1">
+              <Form.Label>Mensaje</Form.Label>
+              <Form.Control as="textarea" rows="3" />
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Enviar
+            </Button>
+          </Form>
+          <article className="donate">
+            <a href="https://paypal.me/edlugora" target="_blank">
+              <section>
+                <h3>¿Me ayudas a<br/> continuar con mis sueños?</h3>
+                <p>Siempre necesitaremos de una mano amiga.</p>
+              </section></a>
+            <Button variant="success" href="https://paypal.me/edlugora" target="_blank">Apoyar</Button>
+          </article>
+       </section>
+       <footer className="Home-footer">
+         <div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from
+           <a href="https://www.flaticon.es/" title="Flaticon">www.flaticon.com</a> <br/>is licensed by
+           <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" > CC 3.0 BY</a>
+         </div> <br/>
+         &#169; {moment().format('YYYY')=="2019"?moment().format('YYYY'):`2019 - ${moment().format('YYYY')}` } por Eduardo Gonzalez
+       </footer>
+     </React.Fragment>
     );
   }
 }
 
 export default Home;
+
+class CustomToggle extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    e.preventDefault();
+
+    this.props.onClick(e);
+  }
+
+  render() {
+    return (
+      <a href="" className="dropdown-basic" onClick={this.handleClick}>
+        {this.props.children}
+      </a>
+    );
+  }
+}
 // onClick={scrollTo(document.body, { top: document.querySelector('.Home-header-body').clientHeight, easing: 'ease-in-out' })}
 /*<div className="Home-header-body">
              <p>
