@@ -173,7 +173,7 @@ class Home extends Component {
                     <FaReact className="spinner"/>
                   </footer>
               </section>
-              {isntPhone?<Image src={avatar} fluid rounded />:''}</section>
+              {isntPhone?<Image src={avatar} fluid roundedCircle  />:''}</section>
           </article>
           <Form className="contact-to-me">
             <h3>Contactame</h3>

@@ -247,13 +247,15 @@ code
     transform scale(0)
     text-align center
     margin-top 2rem
+    z-index 5
+    position relative
   &::before,  &::after
     content ""
     position absolute
     @media screen and (min-width: 700px)
       transform none !important
   &::before
-    z-index -1
+    z-index 3
     top -10%
     left -10%
     right -10%
@@ -296,12 +298,14 @@ code
     max-width 40vw
   @media screen and (orientation:landscape)
     p
-      font-size 2vw
+      font-size 1.7vw
   @media screen and (orientation:portrait)
     p
-      font-size 2vh
+      font-size 1.7vh
 .i-am-container + img
-  max-width 30vw
+  max-height 20rem
+  position relative
+  z-index 1
 .contact-to-me
   position relative
   z-index 3
@@ -325,11 +329,21 @@ code
   padding 1rem
   transform-origin center center
   transform scale(0)
+  @media screen and (orientation:landscape)
+    h3
+      font-size 2.3vw
+    p, a
+      font-size 1.7vw
+  @media screen and (orientation:portrait)
+    h3
+      font-size 2.3vh
+    p, a
+      font-size 1.7vh
   @media screen and (min-width: 700px)
     h3
-      font-size 4vw
+      font-size 2.3vw
     p, a
-      font-size 3vw
+      font-size 1.7vw
   &.donate-show
     animation fade-slide-up 1.5s forwards
   section
