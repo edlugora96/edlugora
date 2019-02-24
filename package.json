@@ -11,7 +11,7 @@
     "nodemailer": "^5.1.1",
     "react": "^16.8.1",
     "react-bootstrap": "^1.0.0-beta.5",
-    "react-bootstrap-table-next": "^2.1.1",
+    "react-bootstrap-table-next": "^2.1.2",
     "react-dom": "^16.8.1",
     "react-helmet": "^5.2.0",
     "react-icons": "^3.4.0",
@@ -20,7 +20,9 @@
     "react-scripts": "2.1.5",
     "redux": "^4.0.1",
     "redux-starter-kit": "^0.4.3",
-    "scroll-js": "^2.2.0"
+    "scroll-js": "^2.2.0",
+    "superagent": "^4.1.0",
+    "utf8": "^3.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -343,6 +343,10 @@ code {
   animation: fade-slide-down 1s forwards;
   animation-delay: 300ms;
 }
+.i-am-fade-slide-down img {
+  animation: fade-slide-down 1s forwards;
+  animation-delay: 450ms;
+}
 .i-am-fade-slide-down footer {
   animation: fade-slide-down 1s forwards;
   animation-delay: 600ms;
@@ -373,6 +377,7 @@ code {
 }
 .i-am-container + img {
   max-height: 20rem;
+  transform: scale(0);
   position: relative;
   z-index: 1;
 }

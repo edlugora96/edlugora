@@ -4,6 +4,7 @@ import { scrollTo } from 'scroll-js';
 import { IoMdCheckmarkCircleOutline as Check, IoLogoNodejs, IoLogoJavascript} from "react-icons/io";
 import { FaReact } from "react-icons/fa";
 import { MdMenu, MdArrowDropDown } from "react-icons/md";
+import { Link } from 'react-router-dom'
 import moment from 'moment';
 import Navbar from './Navbar';
 import avatar from '../../asset/img/avatar.jpg';
@@ -158,7 +159,7 @@ class Home extends Component {
               <ListGroupItem>Ademas de tener la capacidad de enviar SMS personalizados, atraves del manejo de variables. ¿Que esperas?</ListGroupItem>
             </ListGroup>
             <Card.Body>
-              <Button variant="primary">¡Envia tus SMS!</Button>
+              <Link to="/smsmass" className="btn btn-primary">¡Envia tus SMS!</Link>
             </Card.Body>
           </Card>
           <article className="i-am">
