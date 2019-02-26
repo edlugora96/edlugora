@@ -1,0 +1,43 @@
+@import '../../../asset/style/vars.styl'
+@import '../../../asset/style/animations.styl'
+.Proyects
+  min-height: 100vh
+  // overflow: hidden
+  padding-top: 6rem
+  position: relative
+  padding-bottom 5rem
+  .ProyectsSmsmassImg
+    @media screen and (min-width: 700px)
+      width: 40vw
+      position: absolute
+      right: 1rem
+      bottom: 20%
+  .ProyectsSmsmassBody
+    width: 55vw
+    padding: 0 1rem 0 5rem
+  .list-group-item
+    @media screen and (max-width: 700px)
+      display none
+  .list-group-item-show .list-group-item:nth-child(1)
+    @media screen and (max-width: 700px)
+      display block
+      transform scale(0)
+      animation list-group-item-show 1s forwards
+  .list-group-item-show .list-group-item:nth-child(2)
+    @media screen and (max-width: 700px)
+      display block
+      transform scale(0)
+      animation list-group-item-show 1s forwards
+      animation-delay 300ms
+  .list-group-item-show .list-group-item:nth-child(3)
+    @media screen and (max-width: 700px)
+      display block
+      transform scale(0)
+      animation list-group-item-show 1s forwards
+      animation-delay 600ms
+  .list-group-item-show .list-group-item:nth-child(4)
+    @media screen and (max-width: 700px)
+      display block
+      transform scale(0)
+      animation list-group-item-show 1s forwards
+      animation-delay 900ms

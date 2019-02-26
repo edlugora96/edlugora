@@ -1,0 +1,102 @@
+@import '../../../asset/style/vars.styl'
+@import '../../../asset/style/animations.styl'
+.i-am
+  height 100vh
+  transform-style preserve-3d
+  perspective 100px
+  position relative
+  z-index 1
+  // overflow-y hidden
+  transform-origin center center
+  background url('../../../asset/img/flag.jpg')
+  background-position center
+  background-size cover
+  background-attachment fixed
+  @media screen and (min-width: 700px)
+    overflow hidden
+  *
+    position relative
+    z-index 2
+  footer
+    // transform scale(0)
+    font-size 4rem
+    text-align center
+    color #fff
+  p
+    // transform scale(0)
+    z-index 1
+    background rgba(#fff, .9)
+    padding 1rem !important
+    margin 4rem 1rem 1rem 1rem!important
+    border-radius 0.2rem
+    box-shadow shadow-standar
+  h3
+    // transform scale(0)
+    text-align center
+    margin-top 2rem
+    z-index 5
+    position relative
+  &::before,  &::after
+    content ""
+    position absolute
+    // @media screen and (min-width: 700px)
+    //   transform none !important
+  &::before
+    z-index 1
+    top -10%
+    left -10%
+    right -10%
+    height 10rem
+    background #fff
+    transform rotateZ(4deg)
+    @media screen and (min-width: 700px)
+      transform rotateZ(4deg)
+      top -13% !important
+    @media screen and (orientation:landscape)
+      top -30%
+  &::after
+    z-index 1
+    bottom -20%
+    left -10%
+    right -10%
+    height 10rem
+    background #fff
+    transform rotateZ(4deg)
+    @media screen and (orientation:landscape)
+      // transform none
+      bottom -15%
+.i-am-fade-slide-down
+  h3
+    animation fade-slide-down 1s forwards
+  p
+    animation fade-slide-down 1s forwards
+    animation-delay 300 ms
+  img
+    animation fade-slide-down 1s forwards
+    animation-delay 450 ms
+  footer
+    animation fade-slide-down 1s forwards
+    animation-delay 600 ms
+.i-am-last-envolp
+  @media screen and (min-width: 700px)
+    display flex
+    flex-direction row
+    justify-content center
+    align-items center
+    position relative
+.i-am-container
+  @media screen and (min-width: 700px)
+    max-width 40vw
+  @media screen and (orientation:landscape)
+    p
+      font-size 1.7vw
+  @media screen and (orientation:portrait)
+    p
+      font-size 1.7vh
+.i-am-container + img
+  max-height 20rem
+  transform scale(0)
+  position relative
+  z-index 1
+
+

@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 import Textarea from './ExpandingTextarea.jsx'
 import fetchServer from '../../../asset/utils/fetchServer.js';
-import { saveTable, massSendSMSserver } from '../../../redux/reducers.js';
+import { saveTable } from '../../../redux/reducers.js';
 import store from '../../../redux/store.js';
 import pacman from '../../../asset/img/pacman.svg';
 
@@ -131,7 +131,7 @@ const mapStateToProps = (state) => ({
     ...store.getState()
 })
 const mapDispatchToProps = {
-  massSendSMSserver
+  
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FormComponent));
