@@ -1,54 +1,116 @@
 /* jshint unused:false */
 import React, { Component } from 'react';
-import ReactMarkdown from 'react-markdown';
-import { Button, Image } from 'react-bootstrap';
-import { IoIosArrowDown } from "react-icons/io";
-import { Link } from 'react-router-dom'
+import { IoIosArrowDown } from 'react-icons/io';
+import { Link } from 'react-router-dom';
+import { TweenMax } from 'gsap';
+import Typed from 'typed.js';
+import Prism from 'prismjs';
+import 'gsap/src/uncompressed/plugins/ScrollToPlugin';
 import './styles/header.css';
 
-const markGreeting = `
-  ##### *¡HOLA MUNDO!*\n
-  Por 1ra vez te saludo yo **Ed**uado **Lu**is **Go**nzález **Ra**veli.\n
-  *"Este es m i universo Web"*
-`;
+const expressCode = `
+/* Express Server */
+const app = require('express')();
 
+app.set('view engine', 'pug');
+app.get('/', function(req, res){
+  res.render('index', {
+    title: 'Hey',
+    message: 'Hello there!'
+  });
+});
+
+app.listen(3000, function(){
+  console.log('listening on *:3000');
+});
+`,
+  pugCode = `
+//- Pug template
+doctype html
+html(lang="en")
+  head
+    title= title
+  body
+    h1 Pug Examples
+    div.container
+      p= message
+`,
+stylusCode = `
+// Stylus
+base-font-size = 12px
+body-background = invert(#ccc)
+body
+  color #333
+  background body-background
+  font-size base-font-size
+`;
+const typeStrings = [
+  Prism.highlight(pugCode, Prism.languages.pug),
+  Prism.highlight(stylusCode, Prism.languages.stylus),
+  Prism.highlight(expressCode, Prism.languages.javascript)
+];
+const options = {
+  strings: typeStrings,
+  typeSpeed: 50,
+  backSpeed: 50,
+  loop: true
+};
 class HomeHeader extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      p: ''
-    };
-
-    this.handleScroll = this.handleScroll.bind(this);
+    this.handleScroll  = this.handleScroll.bind(this);
+    this.handClickLink = this.handClickLink.bind(this);
   }
 
   handleScroll(){
-    const header = document.querySelector('#HomeHeader');
-    header.classList.add('hero-caption')
-    console.log(header.classList);
-    // window.scrollY
+    this.header.classList.add('hero-caption');
+    this.headerme.style.transform = 'translateX('+ ((window.scrollY*2)*-1) + 'px)';
+    this.headercaption.style.transform = 'translateY('+ (window.scrollY/0.95) + 'px)';
+    this.headergreeting.style.transform = 'translateY('+ (window.scrollY/1.8) + 'px)';
+  }
+  handClickLink(){
+    TweenMax.to(window, 1, { scrollTo: { y: '.Proyects' } });
   }
   componentDidMount() {
-  window.addEventListener('load', this.handleScroll);
+
+    this.header = document.querySelector('#HomeHeader');
+    this.headerme = document.querySelector('.home-header-me');
+    this.headercaption = document.querySelector('.caption');
+    this.headergreeting = document.querySelector('.home-header-body');
+    this.typeHeader = document.querySelector('#typeHeader');
+    this.linkProyects = document.querySelector('.toProyects');
+
+    window.addEventListener('load', this.handleScroll);
+    window.addEventListener('scroll', this.handleScroll);
+    this.linkProyects.addEventListener('click',this.handClickLink);
+
+    this.typed = new Typed(this.typeHeader, options);
+
   }
   componentWillUnmount() {
-  window.removeEventListener('load', this.handleScroll);
+    window.removeEventListener('load', this.handleScroll);
+    window.removeEventListener('scroll', this.handleScroll);
+    this.linkProyects.removeEventListener('click',this.handClickLink);
+    this.typed.destroy();
   }
-
   render() {
     return pug`
       header#HomeHeader.home-header
-        section.home-header-body
-          .home-greeting-wrap
-            .home-greeting-body
-              p.home-wellcome Bienvenidos a:
+        .home-header-me
+          Link(to="# ").toProyects: IoIosArrowDown
 
-              h1.home-brand EdluGora
+        div.caption
+          p.home-wellcome Bienvenidos a:
 
-              .home-greeting: ReactMarkdown(source=markGreeting)
+          h1.home-brand EdluGora
 
-              Link(to="# ").home-link: IoIosArrowDown
-`;
+        .home-greeting-wrap
+          section.home-header-body
+            pre.line-numbers
+              code#typeHeader
+
+          section.home-header-right
+  `;
   }
 }
 export default HomeHeader;

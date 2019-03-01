@@ -6,6 +6,7 @@ import App from './app/App';
 
 import './app/asset/style/bootstrap-reboot.min.css';
 import './app/asset/style/bootstrap.min.css';
+import './app/asset/style/prismjs.css';
 import './app/asset/style/index.css';
 import './app/asset/style/App.css';
 

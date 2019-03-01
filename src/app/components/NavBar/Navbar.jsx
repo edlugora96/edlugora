@@ -7,27 +7,31 @@ import { FaCog } from 'react-icons/fa';
 import './navbar.css';
 class Navbar extends Component {
   render() {
-    return pug`
-      nav.Home-Navbar
-        ul.Home-Navbar-ul
-          li.Home-Navbar-brand
-            //- Image(roundedCircle fluid src=logo alt="Logo EdluGora")
-            | EdluGora
+    if(!window.matchMedia('(max-width: 700px)').matches){
+      return pug`
+        nav.Home-Navbar
+          ul.Home-Navbar-ul
+            li.Home-Navbar-brand
+              //- Image(roundedCircle fluid src=logo alt="Logo EdluGora")
+              | EdluGora
 
-          li.active Proyectos
+            li.active Proyectos
 
-          li Conoceme
+            li Conoceme
 
-          li Contactame
+            li Contactame
 
-          a(href="https://paypal.me/edlugora" target="_blank") Donar
+            a(href="https://paypal.me/edlugora" target="_blank") Donar
 
-          li.Home-Navbar-login
-            FaKey.beatHover
+            li.Home-Navbar-login
+              FaKey.beatHover
 
-          li.Home-Navbar-config
-            FaCog.spinnerHover
-    `;
+            li.Home-Navbar-config
+              FaCog.spinnerHover
+      `;
+    } else {
+      return '';
+    }
   }
 }
 export default Navbar;

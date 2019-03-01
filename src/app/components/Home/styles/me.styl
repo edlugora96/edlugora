@@ -2,11 +2,8 @@
 @import '../../../asset/style/animations.styl'
 .i-am
   height 100vh
-  transform-style preserve-3d
-  perspective 100px
   position relative
   z-index 1
-  // overflow-y hidden
   transform-origin center center
   background url('../../../asset/img/flag.jpg')
   background-position center
@@ -31,11 +28,12 @@
     border-radius 0.2rem
     box-shadow shadow-standar
   h3
-    // transform scale(0)
     text-align center
     margin-top 2rem
     z-index 5
     position relative
+  img
+    width 19rem
   &::before,  &::after
     content ""
     position absolute

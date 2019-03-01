@@ -640,8 +640,6 @@
 }
 .i-am {
   height: 100vh;
-  transform-style: preserve-3d;
-  perspective: 100px;
   position: relative;
   z-index: 1;
   transform-origin: center center;
@@ -677,6 +675,9 @@
   margin-top: 2rem;
   z-index: 5;
   position: relative;
+}
+.i-am img {
+  width: 19rem;
 }
 .i-am::before,
 .i-am::after {

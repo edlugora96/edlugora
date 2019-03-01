@@ -641,54 +641,100 @@
 .Proyects {
   min-height: 100vh;
   padding-top: 6rem;
+  padding-bottom: 2rem;
   position: relative;
-  padding-bottom: 5rem;
+}
+.Proyects hr {
+  position: relative;
+  z-index: 3;
+}
+.Proyects code {
+  color: #690;
+}
+.Proyects .summaryProyects {
+  padding-inline-start: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 5;
 }
 @media screen and (min-width: 700px) {
-  .Proyects .ProyectsSmsmassImg {
+  .Proyects .summaryProyects {
+    flex-direction: row;
+  }
+}
+.Proyects .summaryProyects > * {
+  text-decoration: none;
+}
+.Proyects #edlugora,
+.Proyects #smass {
+  max-width: 19rem;
+  padding: 0 0.5rem;
+  text-align: center;
+}
+.Proyects #edlugora .caption,
+.Proyects #smass .caption {
+  max-width: 9rem;
+  margin-bottom: 0.5rem;
+}
+.Proyects #edlugora .body h4,
+.Proyects #smass .body h4 {
+  color: #607d8b;
+}
+.Proyects #edlugora .body p,
+.Proyects #smass .body p {
+  color: #808080;
+}
+.Proyects .myProyects {
+  color: #607d8b;
+  text-align: center;
+  width: 100vw;
+}
+.Proyects .descriptionProyects {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: stretch;
+  position: relative;
+  z-index: 5;
+}
+.Proyects .descriptionProyects h1,
+.Proyects .descriptionProyects h2,
+.Proyects .descriptionProyects h3,
+.Proyects .descriptionProyects h4,
+.Proyects .descriptionProyects h5,
+.Proyects .descriptionProyects h6,
+.Proyects .descriptionProyects strong {
+  color: #607d8b;
+}
+@media screen and (min-width: 700px) {
+  .Proyects .descriptionProyects {
+    flex-direction: row;
+  }
+}
+.Proyects .descriptionProyects > section {
+  width: 100vw;
+}
+@media screen and (min-width: 700px) {
+  .Proyects .descriptionProyects > section {
+    width: 60vw;
+  }
+}
+.Proyects .descriptionProyects section:first-child {
+  padding: 2rem;
+}
+@media screen and (min-width: 700px) {
+  .Proyects .descriptionProyects section:first-child {
     width: 40vw;
-    position: absolute;
-    right: 1rem;
-    bottom: 20%;
+    padding: 2rem 0 2rem 5rem;
   }
 }
-.Proyects .ProyectsSmsmassBody {
-  width: 55vw;
-  padding: 0 1rem 0 5rem;
-}
-@media screen and (max-width: 700px) {
-  .Proyects .list-group-item {
-    display: none;
-  }
-}
-@media screen and (max-width: 700px) {
-  .Proyects .list-group-item-show .list-group-item:nth-child(1) {
-    display: block;
-    transform: scale(0);
-    animation: list-group-item-show 1s forwards;
-  }
-}
-@media screen and (max-width: 700px) {
-  .Proyects .list-group-item-show .list-group-item:nth-child(2) {
-    display: block;
-    transform: scale(0);
-    animation: list-group-item-show 1s forwards;
-    animation-delay: 300ms;
-  }
-}
-@media screen and (max-width: 700px) {
-  .Proyects .list-group-item-show .list-group-item:nth-child(3) {
-    display: block;
-    transform: scale(0);
-    animation: list-group-item-show 1s forwards;
-    animation-delay: 600ms;
-  }
-}
-@media screen and (max-width: 700px) {
-  .Proyects .list-group-item-show .list-group-item:nth-child(4) {
-    display: block;
-    transform: scale(0);
-    animation: list-group-item-show 1s forwards;
-    animation-delay: 900ms;
+@media screen and (min-width: 700px) {
+  .Proyects .descriptionProyects section:last-child {
+    background: url("../../../asset/img/sendSms.svg");
+    background-position: center center;
+    background-repeat: no-repeat;
   }
 }

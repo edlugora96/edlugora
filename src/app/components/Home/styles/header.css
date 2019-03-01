@@ -641,31 +641,35 @@
 .home-header {
   height: 100vh;
   position: relative;
-  transform-style: preserve-3d;
   overflow: hidden;
-  perspective: 100px;
+  background-color: #cfd8dc;
   z-index: 5;
 }
-.home-header::before {
+.home-header .home-header-me {
   content: "";
-  background: url("../../../asset/img/apple.jpg") #fff;
-  background-size: initial;
+  background: url("../../../asset/img/me.png");
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position-x: center;
-  background-position-y: -16rem;
+  background-position: center bottom;
   position: absolute;
   top: 0;
   right: 0;
   height: 100vh;
   left: 0;
-  z-index: -1;
+  z-index: 5;
   background-origin: content-box;
 }
-@media screen and (min-width: 700px) {
-  .home-header::before {
-    background-size: cover;
-    background-position-y: -5rem;
-  }
+.home-header .home-header-me a {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: #fff;
+  font-size: 2.5rem;
+  text-align: center;
+}
+.home-header .home-header-me svg {
+  animation: fade-slide-down 1s infinite forwards;
 }
 .home-header p {
   padding: 1rem 0.5rem;
@@ -682,26 +686,26 @@
     font-size: 6vw;
   }
 }
-.home-header .home-wellcome,
-.home-header .home-brand,
-.home-header .home-greeting,
-.home-header .home-link svg {
+.home-wellcome,
+.home-brand,
+.line-numbers,
+.home-header-right:before {
   transform: scale(0);
 }
 .hero-caption .home-wellcome {
-  animation: hero-caption 1s 1 forwards;
+  animation: fade-slide-down 1s 1 forwards;
 }
 .hero-caption .home-brand {
-  animation: hero-caption 1s 1 forwards;
+  animation: fade-slide-down 1s 1 forwards;
   animation-delay: 300ms;
 }
-.hero-caption .home-greeting {
-  animation: hero-caption 1s 1 forwards;
+.hero-caption .home-header-right:before {
+  animation: fade-slide-down 1s 1 forwards;
   animation-delay: 600ms;
 }
-.hero-caption .home-link svg {
-  animation: hero-caption 1s 1 forwards;
-  animation-delay: 900ms;
+.hero-caption .line-numbers {
+  animation: fade-slide-down 1s 1 forwards;
+  animation-delay: 600ms;
 }
 .home-header-body {
   display: flex;
@@ -711,39 +715,98 @@
   height: 100vh;
   width: 100vw;
   position: relative;
-  top: -56px;
+  bottom: 0;
   z-index: 2;
   transform-origin: center center;
-  animation: fade-slide-down 1s 1 forwards;
-}
-.home-greeting {
-  margin-bottom: 1rem;
-}
-.home-greeting p {
-  padding: 0.2rem;
-}
-.home-greeting-wrap {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-.home-greeting-body {
-  position: relative;
-}
-.home-greeting-body h1 {
-  text-align: center;
-}
-.home-greeting-body svg {
-  color: initial;
-  font-size: 2rem;
-  position: absolute;
-  bottom: -2rem;
-  left: calc(50% - 1rem);
 }
 @media screen and (min-width: 700px) {
-  .home-greeting-body {
-    position: relative;
-    left: -1.5rem;
+  .home-header-body {
+    width: 50vw;
+  }
+}
+.home-header-right:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  width: 100vw;
+}
+@media screen and (min-width: 700px) {
+  .home-header-right:before {
+    background: url("../../../asset/img/pc.png");
+    background-repeat: no-repeat;
+    background-position-x: 50vw;
+    background-position-y: center;
+    background-attachment: fixed;
+    background-size: 50vw;
+    z-index: -1;
+    width: 50vw;
+  }
+}
+.caption {
+  position: relative;
+  z-index: 5;
+}
+.caption * {
+  text-align: center;
+}
+.home-greeting-wrap {
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 80vh;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (min-width: 700px) {
+  .home-greeting-wrap {
+    height: 95vh;
+    flex-direction: row;
+  }
+}
+.line-numbers {
+  height: 21rem;
+  width: 100vw;
+/* background: #141414 */
+  padding: 1rem;
+}
+@media screen and (min-width: 700px) {
+  .line-numbers {
+    width: 21rem;
+  }
+}
+#typeHeader {
+  whiteSpace: 'pre';
+}
+.typed-cursor {
+  opacity: 1;
+  animation: typedjsBlink 0.7s infinite;
+}
+.typed-fade-out {
+  opacity: 0;
+  transition: opacity 0.25s;
+  animation: 0;
+}
+@-moz-keyframes typedjsBlink {
+  50% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes typedjsBlink {
+  50% {
+    opacity: 0;
+  }
+}
+@-o-keyframes typedjsBlink {
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes typedjsBlink {
+  50% {
+    opacity: 0;
   }
 }

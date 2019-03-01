@@ -1,51 +1,63 @@
 /* jshint unused:false */
 import React, { Component } from 'react';
 import ReactMarkdown from 'react-markdown';
+import { Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import smsIcon from '../../asset/img/smsmass.svg';
+import logo from '../../asset/img/avatar.ico';
 import './styles/proyects.css';
 
-const markProyects = `
-  ## Mis proyectos
-  ----
-  #### SMS Mass
-  Es un aplicación con la que puedes mandar miles de SMS sin mucho esfuerso, a partir de una lista de contactos y un mensaje, en instantes lograras:
-  - Cominicar tus campañas de marketing.
-  - Comunicar a tus empleados cualquier evento a celebrar.
-  - Enviar tus recordatorios.\n\n
-  Ademas de tener la capacidad de enviar SMS personalizados, atraves del manejo de variables. \n
-  \n**Mensaje:**
-  Hola \`<% Nombre %>\` quiero invitarte a \`<% Actividad %>\` este \`<% Dia %>\` no faltes\`<% Variable n %>\`\n\n
-  **Tabla de Contactos:**\n
-  | Nombre | Telefono | Actividad | Dia | Variable n |
-  | ------ | :--------: | :------: | :------: | :------: |
-  |Maria|0000-0000000| Jugar | Lunes | ... |
-  |Juan|0000-0000000| Comer | Martes | ... |
-  |Ana|0000-0000000| Correr | Viernes | ... | \n
-  \n
-  ---
-  **Resultado:**\n
+const markSmsmass = `
+## SMS Mass
+Es un aplicación con la que puedes mandar miles de SMS sin mucho esfuerso, a partir de una lista de contactos y un mensaje, en instantes lograras:
+- Cominicar tus campañas de marketing.
+- Comunicar a tus empleados cualquier evento a celebrar.
+- Enviar tus recordatorios.
+- Enviar SMS personalizados, atraves del manejo de variables.
+`;
 
-  | Mensajes |
-  | ------ |
-  | Hola Maria quiero invitarte a Jugar este Lunes no faltes... |
-  | Hola Juan quiero invitarte a Comer este Martes no faltes... |
-  | Hola Ana quiero invitarte a Correr este Viernes no faltes... |
-  ---
+const markEdlugora = `
+#### EdluGora
+*Mi pagina principal donde listaré todos los proyectos que llevo acabo.*
+`;
+const markSmass = `
+#### SMSmass
+*Poderosa App con la cual podras mandar miles de SMS de manera sencilla.*
 `;
 
 class HomeProyects extends Component {
   render() {
     return pug`
       .Proyects
-        article.smsmass
-          img(src=smsIcon).ProyectsSmsmassImg
+        ul.summaryProyects
+          Link(to="/")#edlugora.active
+            Image.caption(src=logo roundedCircle)
+            pre(markdown="true").body: ReactMarkdown(source=markEdlugora)
 
-          .ProyectsSmsmassBody
-            ReactMarkdown(source=markProyects)
+          Link(to="# ")#smass
+            Image.caption(src=smsIcon rounded)
+            pre(markdown="true").body: ReactMarkdown(source=markSmass)
 
-            Link(to="/smsmass" className="btn btn-primary") Go SMS Mass
+        hr
+
+        h1.myProyects Mis Proyectos
+
+        article.descriptionProyects
+          section.smsmass
+            pre(markdown="true"): ReactMarkdown(source=markSmsmass)
+
+          section.smsLogo
+
+        hr
 `;
-  }
+}
 }
 export default HomeProyects;
+
+/* article.smsmass
+  img(src=smsIcon).ProyectsSmsmassImg
+
+  .ProyectsSmsmassBody
+    ReactMarkdown(source=markProyects)
+
+    Link(to="/sm smass" className="btn btn-primary") Go SMS Mass*/

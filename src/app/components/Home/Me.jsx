@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Image } from 'react-bootstrap';
 import ReactMarkdown from 'react-markdown';
 import { IoLogoNodejs, IoLogoJavascript } from 'react-icons/io';
-import { FaReact } from "react-icons/fa";
+import { FaReact } from 'react-icons/fa';
 import avatar from '../../asset/img/avatar.jpg';
 import './styles/me.css';
 
@@ -17,7 +17,7 @@ class HomeMe extends Component {
     return pug`
       article.i-am
         section.i-am-last-envolp
-          if !isntPhone
+          if isntPhone
             Image(src=avatar fluid roundedCircle)
 
           section.i-am-container
